@@ -11,12 +11,14 @@ from ortools.sat.python import cp_model
 
 ####################################################################################################
 # Parameters (customize these)
-session = 'S1'  # Session to solve (should match the column name in the sheet 'attendance_list')
-number_of_groups_per_size = {2: 5}  # {size: number_of_groups} (ensure that the sum of number_of_groups * size equals the number of students)
+session = 'S5'  # Session to solve (should match the column name in the sheet 'attendance_list')
+number_of_groups_per_size = {2: 10}  # {size: number_of_groups} (ensure that the sum of number_of_groups * size equals the number of students)
 weight_repeated_pairings = 100  # Weight for the repeated pairings objective function
 weight_level = 1  # Weight for the level balance objective function
-name_data_file = 'students_data_example.xlsx'  # Name of the Excel file with the data
-results_data_file = 'students_group_assignments_level.xlsx'  # Name of the Excel file with the results
+name_data_file = 'MQO_lista_estudiantes.xlsx'  # Name of the Excel file with the data
+results_data_file = 'MQO_grupos_clase_'+session+'.xlsx'  # Name of the Excel file with the results
+#name_data_file = 'students_data_example.xlsx'  # Name of the Excel file with the data
+#results_data_file = 'students_group_assignments.xlsx'  # Name of the Excel file with the results
 ####################################################################################################
 
 # Start the timer
@@ -148,6 +150,7 @@ with open(results_file_path, 'w') as file:
     else:
         file.write("No solution found.\n")
     file.write(f"Execution time: {execution_time:.2f} seconds\n")
+
 
 # Create a DataFrame to store the results
 results = []
